@@ -88,7 +88,8 @@ def run_demo(env, policy, max_num_steps=10, render=False,
     if check_reward:
         assert tot_reward > 0
     if verbose:
-        input("press enter to continue to next problem")
+        # input("press enter to continue to next problem")
+        pass
 
 
 class DummyFile:
