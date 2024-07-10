@@ -47,10 +47,10 @@ def query_openai(prompt_with_context):
     if os.path.exists(answer_cache_path):
         return open(answer_cache_path).read()
     completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o",
         messages=[
             {"role": "system",
-             "content": "You are a PDDL generator that edit either PDDL domain or PDDL problem based on the user ask"},
+             "content": "You are a PDDL generator that edit either PDDL domain or PDDL problem based on the user ask. User will copy-paste your answers, so they have to be full."},
             {"role": "user", "content": prompt_with_context},
             # {"role": "assistant", "content": "<history here"}
         ]
