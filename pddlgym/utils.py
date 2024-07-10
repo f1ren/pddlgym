@@ -1,5 +1,6 @@
 """Utilities
 """
+import time
 from collections import defaultdict
 import contextlib
 import sys
@@ -8,6 +9,7 @@ import numpy as np
 import os
 import gym
 import imageio
+import cv2
 
 
 def get_object_combinations(objects, arity, var_types=None, 
@@ -52,6 +54,9 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
         if render:
             images.append(env.render())
+            cv2.imshow('Frame', images[-1])
+            cv2.waitKey(1)
+            time.sleep(0.01)
     
         action = policy(obs)
         if verbose:
@@ -71,8 +76,10 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
     if render:
         images.append(env.render())
-        imageio.mimwrite(video_path, images, fps=fps)
-        print("Wrote out video to", video_path)
+        cv2.imshow('Frame', images[-1])
+        cv2.waitKey(1)
+        # imageio.mimwrite(video_path, images, fps=fps)
+        # print("Wrote out video to", video_path)
 
     env.close()
     if check_reward:

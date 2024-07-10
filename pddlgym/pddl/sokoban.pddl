@@ -1,4 +1,3 @@
-
 (define (domain sokoban)
   (:requirements :typing )
   (:types thing location direction)
@@ -76,4 +75,3 @@
 	)
 
 )
-        

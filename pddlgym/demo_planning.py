@@ -58,20 +58,20 @@ def demo_planning(env_name, render=True, probabilistic=False, problem_index=0, v
 
 def run_all(render=True, verbose=True):
     ## Some probabilistic environments
-    demo_planning("explodingblocks", probabilistic=True, render=render, verbose=verbose)
-    demo_planning("tireworld", probabilistic=True, render=render, verbose=verbose)
-    demo_planning("river", probabilistic=True, render=render, verbose=verbose)
+    # demo_planning("explodingblocks", probabilistic=True, render=render, verbose=verbose)
+    # demo_planning("tireworld", probabilistic=True, render=render, verbose=verbose)
+    # demo_planning("river", probabilistic=True, render=render, verbose=verbose)
 
     ## Some deterministic environments
     demo_planning("sokoban", render=render, verbose=verbose)
-    demo_planning("gripper", render=render, verbose=verbose)
-    demo_planning("rearrangement", render=render, problem_index=6, verbose=verbose)
-    demo_planning("minecraft", render=render, verbose=verbose)
-    demo_planning("blocks", render=render, verbose=verbose)
-    demo_planning("blocks_operator_actions", render=render, verbose=verbose)
-    demo_planning("quantifiedblocks", render=render, verbose=verbose)
-    demo_planning("fridge", render=render, verbose=verbose)
+    # demo_planning("gripper", render=render, verbose=verbose)
+    # demo_planning("rearrangement", render=render, problem_index=6, verbose=verbose)
+    # demo_planning("minecraft", render=render, verbose=verbose)
+    # demo_planning("blocks", render=render, verbose=verbose)
+    # demo_planning("blocks_operator_actions", render=render, verbose=verbose)
+    # demo_planning("quantifiedblocks", render=render, verbose=verbose)
+    # demo_planning("fridge", render=render, verbose=verbose)
 
 
 if __name__ == '__main__':
-    run_all(render=False, verbose=True)
+    run_all(render=True, verbose=True)
