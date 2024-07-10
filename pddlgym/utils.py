@@ -58,7 +58,6 @@ def run_demo(env, policy, max_num_steps=10, render=False,
             # cv2.imshow('Frame', images[-1])
             # cv2.waitKey(1)
             Image.fromarray(np.uint8(images[-1])).save('simulation.png')
-            time.sleep(0.01)
     
         action = policy(obs)
         if verbose:
