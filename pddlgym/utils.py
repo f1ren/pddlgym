@@ -46,6 +46,8 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
     obs, _ = env.reset()
 
+    Image.fromarray(np.uint8(env.render())).save('simulation.png')
+
     if seed is not None:
         env.action_space.seed(seed)
 

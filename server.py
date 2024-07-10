@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 import re
+import time
 from pathlib import Path
 
 from flask import Flask, render_template, request, jsonify, send_file
@@ -45,6 +46,7 @@ def query_openai(prompt_with_context):
     CACHE_PATH = './cache/openai_response_cache/'
     answer_cache_path = CACHE_PATH + hash + '.txt'
     if os.path.exists(answer_cache_path):
+        time.sleep(2)
         return open(answer_cache_path).read()
     completion = client.chat.completions.create(
         model="gpt-4o",
@@ -76,6 +78,7 @@ def save_if_code(response):
             print(f'Writing problem to {PDDL_PROBLEM_PATH}')
             open(PDDL_PROBLEM_PATH, 'w').write(code)
         else:
+            print(code)
             raise ValueError('Unexpected code')
 
         # demo_planning("sokoban", render=True, verbose=True)
@@ -90,6 +93,7 @@ def query_view():
         print(response)
 
         return jsonify({'response': response})
+    demo_planning("sokoban", render=True, verbose=True, max_num_steps=0)
     return render_template('index.html')
 
 @app.route("/simulation", methods=['GET'])

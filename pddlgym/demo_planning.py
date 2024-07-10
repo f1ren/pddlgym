@@ -43,7 +43,7 @@ def create_replanning_policy(env, planner):
         return plan.pop(0)
     return policy
 
-def demo_planning(env_name, render=True, probabilistic=False, problem_index=0, verbose=True):
+def demo_planning(env_name, render=True, probabilistic=False, problem_index=0, verbose=True, max_num_steps=10):
     env = pddlgym.make("PDDLEnv{}-v0".format(env_name.capitalize()))
     env.fix_problem_index(problem_index)
     planner = FD(alias_flag="--alias lama-first")
@@ -53,7 +53,7 @@ def demo_planning(env_name, render=True, probabilistic=False, problem_index=0, v
         policy = create_single_plan_policy(env, planner)
     video_path = "/tmp/{}_random_demo.mp4".format(env_name)
     run_demo(env, policy, render=render, verbose=verbose, seed=0,
-             video_path=video_path)
+             video_path=video_path, max_num_steps=max_num_steps)
 
 
 def run_all(render=True, verbose=True):
