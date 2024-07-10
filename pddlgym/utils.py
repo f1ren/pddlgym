@@ -10,6 +10,7 @@ import os
 import gym
 import imageio
 import cv2
+from PIL import Image
 
 
 def get_object_combinations(objects, arity, var_types=None, 
@@ -54,8 +55,9 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
         if render:
             images.append(env.render())
-            cv2.imshow('Frame', images[-1])
-            cv2.waitKey(1)
+            # cv2.imshow('Frame', images[-1])
+            # cv2.waitKey(1)
+            Image.fromarray(np.uint8(images[-1])).save('simulation.png')
             time.sleep(0.01)
     
         action = policy(obs)
@@ -76,8 +78,9 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
     if render:
         images.append(env.render())
-        cv2.imshow('Frame', images[-1])
-        cv2.waitKey(1)
+        Image.fromarray(np.uint8(images[-1])).save('simulation.png')
+        # cv2.imshow('Frame', images[-1])
+        # cv2.waitKey(1)
         # imageio.mimwrite(video_path, images, fps=fps)
         # print("Wrote out video to", video_path)
 

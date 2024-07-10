@@ -45,6 +45,18 @@
                     }
                 });
             });
+
+            setInterval(() => {
+                fetch('http://http://127.0.0.1:5000/simulation?time=' + new Date())
+                    .then(response => response.blob())
+                    .then(blob => {
+                        let url = URL.createObjectURL(blob);
+                        let img = document.querySelector('img');
+                        img.src = url;
+                    })
+                    .catch(e => console.error(e));
+            }, 500);
+
         });
     </script>
 </head>
@@ -54,20 +66,20 @@
         <div class="container col-9">
             <div class="mb-3">
                 <h6>Response:</h6>
-                <div class="container border overflow-auto h-100" id="response"></div>
+                <div class="container border overflow-auto h-50" id="response"></div>
 
             </div>
             <div class="mb-3">
                 <form method="post" action="">
                     <label for="prompt" class="form-label"><strong>Prompt: </strong></label>
-                    <textarea class="form-control" type="textarea" id="prompt" name="prompt" rows="3" autofocus></textarea>
+                    <textarea class="form-control" type="textarea" id="prompt" name="prompt" rows="3" autofocus>Remove a stone and keep the problem solvable.</textarea>
                     <br>
                     <button class="btn btn-primary " type="submit">Submit</button>
                 </form>
             </div>
         </div>
         <div class="container col-3">
-            a
+            <img src="http://127.0.0.1:5000/simulation"/>
         </div>
     </div>
 </body>

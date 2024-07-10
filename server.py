@@ -4,7 +4,7 @@ import os
 import re
 from pathlib import Path
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 from openai import OpenAI
 
 from pddlgym.demo_planning import demo_planning
@@ -91,6 +91,10 @@ def query_view():
 
         return jsonify({'response': response})
     return render_template('index.html')
+
+@app.route("/simulation", methods=['GET'])
+def get_simulation_image():
+    return send_file('simulation.png', mimetype='image/jpg')
 
 
 if __name__ == "__main__":
