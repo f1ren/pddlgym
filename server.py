@@ -52,7 +52,10 @@ def query_openai(prompt_with_context):
         model="gpt-4o",
         messages=[
             {"role": "system",
-             "content": "You are a PDDL generator that edit either PDDL domain or PDDL problem based on the user ask. User will copy-paste your answers, so they have to be full."},
+             "content": "You are a PDDL generator that edit PDDL domain or PDDL problem based on the user ask. "
+                        "User will copy-paste your answers, so they have to be full. "
+                        "Preserve existing comments as they are, without changing them. "
+             },
             {"role": "user", "content": prompt_with_context},
             # {"role": "assistant", "content": "<history here"}
         ]
