@@ -46,7 +46,7 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
     obs, _ = env.reset()
 
-    Image.fromarray(np.uint8(env.render())).save('simulation.png')
+    save_screen(env.render())
 
     if seed is not None:
         env.action_space.seed(seed)
@@ -57,9 +57,10 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
         if render:
             images.append(env.render())
-            # cv2.imshow('Frame', images[-1])
-            # cv2.waitKey(1)
-            Image.fromarray(np.uint8(images[-1])).save('simulation.png')
+            if images[-1] is not None:
+                cv2.imshow('Frame', images[-1])
+                cv2.waitKey(5)
+            save_screen(images[-1])
     
         action = policy(obs)
         if verbose:
@@ -79,7 +80,7 @@ def run_demo(env, policy, max_num_steps=10, render=False,
 
     if render:
         images.append(env.render())
-        Image.fromarray(np.uint8(images[-1])).save('simulation.png')
+        save_screen(images[-1])
         # cv2.imshow('Frame', images[-1])
         # cv2.waitKey(1)
         # imageio.mimwrite(video_path, images, fps=fps)
@@ -91,6 +92,11 @@ def run_demo(env, policy, max_num_steps=10, render=False,
     if verbose:
         # input("press enter to continue to next problem")
         pass
+
+
+def save_screen(image):
+    if image is not None:
+        Image.fromarray(np.uint8(image)).save('simulation.png')
 
 
 class DummyFile:

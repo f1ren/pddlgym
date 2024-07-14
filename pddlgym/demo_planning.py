@@ -63,8 +63,8 @@ def run_all(render=True, verbose=True):
     # demo_planning("river", probabilistic=True, render=render, verbose=verbose)
 
     ## Some deterministic environments
-    demo_planning("sokoban", render=render, verbose=verbose)
-    # demo_planning("gripper", render=render, verbose=verbose)
+    # demo_planning("sokoban", render=render, verbose=verbose)
+    demo_planning("gripper", render=render, verbose=verbose)
     # demo_planning("rearrangement", render=render, problem_index=6, verbose=verbose)
     # demo_planning("minecraft", render=render, verbose=verbose)
     # demo_planning("blocks", render=render, verbose=verbose)
